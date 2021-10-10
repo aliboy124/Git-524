@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Git Tutorial</title>
+
+    <style>
+
+    img{
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    code{
+        padding: 0.5% 3%;
+        background-color:lightgrey ;
+        color: black;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1 class="mx-auto my-3">Muhammad Ali   -   BSEF18A524</h1>
+
+        <hr><h3>Creating a Directory</h3>
+        <p>First we need to create a Directory on your machine which will hold our files.</p>
+        <img src="images/create dir.png">
+
+        <hr><h3>Creating README.md file</h3>
+        <p>Almost all repositories on github have a README.md file. This file contains the description as well as setup instruction for the repo. We'll go ahead and create and empty file.</p>
+        <img src="images/create README file.png">
+
+        <hr><h3>Initialize Git</h3>
+        <p>Now that we have a Directory as well as a file in it, we need to Initialize git in the directory. This will create .git which means that this directory is a github repository now.</p>
+        <code>$ git init</code><br>
+        <img src="images/initialize git.png">
+
+        <hr><h3>Staging changes</h3>
+        <p>Staging changes in a repo(short for repository) simply marks the file(s) for commit. In simple terms, we need to stage our changes before we confirm them. Let's go ahead and stage all the changes in our repo now. For a specific file:</p>
+        <code>$ git add <i>filename</i></code><br><br><p>and for all files:</p>
+        <code>$ git add .</code><br>
+        <img src="images/stage changes.png">
+
+        <hr><h3>Status of files</h3>
+        <p>We can check the staged files to make sure all changes are desirable, by using the following command:</p>
+        <code>$ git status</code><br>
+        <img src="images/changes status.png">
+
+        <hr><h3>Commit changes</h3>
+        <p>Commit changes means we are confirming the changes. Note that changes need to be staged before they can be commited.With every commit a message is also added to let others now what changes we have made. In the below command '-m' is a flag which means that a message will follow the command. In the example below, the message is 'First commit'.</p>
+        <code>$ git commit -m '<i>your_message_here</i>'</code><br>
+        <img src="images/commit changes.png">
+
+        <hr><h3>Adding Origin</h3>
+        <p>Before we go further, we need to understand that what we have is on our local machine so we need to link it to the <i>origin</i>(the remote github repository) before we can upload our changes. In order to do so, first we need the link to our github repo as seen below:</p>
+        <img src="images/repo link.png">
+        <p>Once we have the link we can use the following command to link our local to the remote/origin:</p>
+        <code>$ git remote add origin <i>your_repo_link_here</i></code><br><br>
+        <p>To list all remote origins we have linked to, we can use:</p>
+        <code>$ git remote -v</code><br>
+        <img src="images/add origin.png">
+
+        <hr><h3>Pushing to remote</h3>
+        <p><i>Push</i> in git means to 'upload'. Here we use it to upload our changes to the remote repo so our changes are saved there. Please note that git push requires and origin to be added first.</p>
+        <code>$ git push -u origin master</code><br>
+        <img src="images/push origin.png">
+        <p>We can see our changes to the remote here:</p>
+        <img src="images/sample1.png">
+
+        <hr><h3>Branches</h3>
+        <p>Git branch commands are pretty straightforward. To list all and current branches we use:</p>
+        <code>$ git branch</code><br><br>
+        <p>We can also create a new branch with</p>
+        <code>$ git branch <i>your_branch_name</i></code><br>
+        <img src="images/git branch.png">
+
+        <hr><h3>Git Checkout</h3>
+        <p>So far we've created new branches but as evident in the last picture, we haven't switched to our new branch. Keeping this in mind is very important when working with multiple branches. In order to do this we use the following command:</p>
+        <code>$ git checkout <i>your_branch_name</i></code><br>
+        <img src="images/git checkout.png" alt="">
+
+        <hr><h3>Pushing branches</h3>
+        <p>As in files, our new branch is present on our local machine, not on the remote repo. So others cannot see or access this branch yet. In order to make it available we need to push it just as we did with files above.</p>
+        <code>$ git push -u origin <i>your_branch_name</i></code><br>
+        <img src="images/push branch.png" alt="">
+        <p>Our new branch can be seen on the repo:</p>
+        <img src="images/sample2.png" alt="">
+
+        <hr><h3>Commit Logs</h3>
+        <p>We can list all our commits by using the following command:</p>
+        <code>$ git log</code><br>
+        <img src="images/git log.png" alt="">
+
+        <hr><h3>Recap Walkthrough</h3>
+        <p>Below images will recap all above commands and show a sample workflow, this time by adding new image file to our repo.</p>
+        <img src="images/walkthrough1.png" alt="">
+        <img src="images/walkthrough2.png" alt="">
+
+        <hr><h3>Cloning repositories</h3>
+        <p>So far we have been working on our local machine and pushing the changes. What if we need to work on a repo that someone else has created already? In order to do so we need to 'clone' that repo on our machine. Note that a cloned repo does not require the 'git init' command.</p>
+        <code>$ git clone <i>repo_link</i></code><br>
+        <img src="images/git clone.png" alt="">
+
+        <hr><h3>Pulling</h3>
+        <p>We have discussed the use of 'push' to upload our changes, but github has a simultaneous workflow which means that multiple people can work on the same thing. So we need to 'get' the changes made by someone else or changes not yet present on the local machine. In order to do so we use the 'pull' command. It also requires an origin added beforehand. In order to demonstrate this, we will create a file on the remote.</p>
+        <img src="images/changes in remote.png" alt="">
+        <p>Once the changes have been made we will 'pull' them into our repo. Note the output of the 'dir' command before and after the use of 'git pull':</p>
+        <code>$ git pull origin master</code><br>
+        <img src="images/git pull.png" alt="">
+
+        <h4>Congratulations!!! This concludes the Tutorial.</h4><br><br><hr>
+
+    </div>
+
+</body>
+</html>
